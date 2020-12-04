@@ -7,7 +7,8 @@ library(DataExplorer)
 countyrevenue <- read.csv("Data/Updated County Revenue2noNA.csv")
 # countyrevenue # dataframe!!
 
-sERevenue <- countyrevenue %>% filter(County %in% c("Machakos","Makueni","Kitui"))
+sERevenue <- countyrevenue %>% 
+   filter(County %in% c("Machakos","Makueni","Kitui"))
 head(sERevenue)
 
 plot(sERevenue)
@@ -39,5 +40,12 @@ ts(data = sERevenue,
    frequency = 3
    
    )
+
+## Create a Histogram of County Revenue in the year 2019
+countyrevenue <- countyrevenue %>%
+   filter(Year = 2019) %>%
+   ggplot(aes(Total)) + 
+   geom_histogram()
+
 
 
